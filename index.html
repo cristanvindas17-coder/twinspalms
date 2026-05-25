@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twin Palms House | Monteverde | El Hogar de Lili</title>
+    <meta name="description" content="Hosp&eacute;date en Monteverde con el calor de un hogar. Lili y Christan te reciben en Twin Palms House con los mejores desayunos y asesor&iacute;a en tours.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #d4a373;
+            --bg: #fefae0;
+            --text: #333;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
+
+        .nav-links { display: flex; gap: 25px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 { font-size: 4rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.3rem; max-width: 700px; margin-bottom: 35px; font-weight: 300; }
+
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+
+        .cta-btn {
+            padding: 16px 32px;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .cta-btn.secondary { background: var(--primary); }
+
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--white);
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+        .trust-item { font-weight: 600; font-size: 0.9rem; color: #555; }
+        .trust-item i { color: #f1c40f; margin-right: 5px; }
+
+        /* Sections */
+        section { padding: 80px 10%; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.8rem; color: var(--primary); margin-bottom: 15px; }
+        .section-title div { width: 60px; height: 3px; background: var(--accent); margin: 0 auto; }
+
+        /* About Lili Section */
+        .lili-section {
+            background: #fff;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+        .lili-img { flex: 1; min-width: 300px; border-radius: 15px; overflow: hidden; height: 400px; }
+        .lili-img img { width: 100%; height: 100%; object-fit: cover; }
+        .lili-text { flex: 1.5; min-width: 300px; }
+        .lili-text h3 { font-size: 2rem; color: var(--primary); margin-bottom: 20px; }
+        .lili-text p { font-size: 1.1rem; color: #555; margin-bottom: 20px; }
+
+        /* Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-body { padding: 25px; }
+        .card-body h3 { margin-bottom: 10px; color: var(--primary); }
+
+        /* Reviews Section */
+        .reviews { background: var(--primary); color: #fff; }
+        .review-card { background: rgba(255,255,255,0.08); padding: 30px; border-radius: 15px; border-left: 4px solid var(--accent); }
+        .review-card p { font-style: italic; margin-bottom: 15px; }
+        .review-card span { font-weight: 700; color: var(--accent); display: block; margin-top: 10px; }
+        
+        .view-all-btn {
+            display: block;
+            margin: 40px auto 0;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--accent);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .view-all-btn:hover { background: var(--accent); color: var(--primary); }
+
+        /* Modal Reseñas */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            padding: 50px 10%;
+            overflow-y: auto;
+        }
+        .modal-content { background: var(--bg); padding: 40px; border-radius: 20px; max-width: 800px; margin: 0 auto; color: #333; }
+        .close-modal { float: right; font-size: 2rem; cursor: pointer; color: var(--primary); }
+        .modal-review { border-bottom: 1px solid #ddd; padding: 20px 0; }
+
+        /* Tour Modal */
+        #tourModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 3000;
+            overflow-y: auto;
+            padding: 30px 15px;
+            backdrop-filter: blur(6px);
+        }
+        .tour-modal-box {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 680px;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: popIn 0.3s ease;
+        }
+        @keyframes popIn { from { transform: scale(0.92); opacity:0; } to { transform: scale(1); opacity:1; } }
+        .tour-modal-img { width: 100%; height: 280px; object-fit: cover; }
+        .tour-modal-body { padding: 30px; }
+        .tour-modal-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .tour-modal-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #1a1a2e; margin-bottom: 8px; }
+        .tour-modal-meta { color: #888; font-size: 0.85rem; margin-bottom: 16px; }
+        .tour-modal-desc { color: #444; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+        .tour-modal-highlights { background: #f8f9fa; border-radius: 12px; padding: 18px 20px; margin-bottom: 24px; }
+        .tour-modal-highlights h4 { color: #1a1a2e; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .tour-modal-highlights ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .tour-modal-highlights li::before { content: '✅ '; }
+        .tour-modal-highlights li { font-size: 0.88rem; color: #555; }
+        .tour-modal-wa {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: #25d366; color: #fff; padding: 15px 30px;
+            border-radius: 50px; font-size: 1rem; font-weight: 700;
+            text-decoration: none; transition: background 0.3s;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+        }
+        .tour-modal-wa:hover { background: #1ebe5d; }
+        .tour-modal-close {
+            position: absolute; top: 18px; right: 22px;
+            background: rgba(0,0,0,0.5); color: #fff;
+            border: none; border-radius: 50%; width: 38px; height: 38px;
+            font-size: 1.3rem; cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .tour-modal-close:hover { background: rgba(0,0,0,0.8); }
+        .tour-modal-wrap { position: relative; max-width: 680px; margin: 0 auto; }
+        .tour-open-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #1a1a2e; color: #fff; padding: 10px 22px;
+            border-radius: 25px; font-size: 0.88rem; font-weight: 600;
+            border: none; cursor: pointer; transition: background 0.3s;
+        }
+        .tour-open-btn:hover { background: var(--accent); }
+
+        /* Footer */
+        footer { background: #111; color: #777; padding: 60px 10%; text-align: center; }
+        .footer-links a { color: var(--accent); text-decoration: none; margin: 0 15px; font-weight: 600; }
+
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: #fff; width: 65px; height: 65px;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            font-size: 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 1000;
+            text-decoration: none; transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        .menu-toggle { display: none; font-size: 1.8rem; color: var(--primary); cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 50px 20px; }
+            nav { padding: 15px 20px; }
+            .menu-toggle { display: block; }
+            .nav-links { 
+                display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; 
+                width: 100%; background: rgba(255, 255, 255, 0.98); padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: 0.3s ease-in-out; 
+            }
+            .nav-links.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+            .nav-links li { text-align: center; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">TWIN PALMS</div>
+        <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#inicio" onclick="toggleMenu()">Inicio</a></li>
+            <li><a href="#lili" onclick="toggleMenu()">Sobre Lili</a></li>
+            <li><a href="#alojamiento" onclick="toggleMenu()">Alojamiento</a></li>
+            <li><a href="#apartamento" onclick="toggleMenu()">Apartamento</a></li>
+            <li><a href="#experiencias" onclick="toggleMenu()">Tours</a></li>
+            <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero" id="inicio">
+        <h1>Siente el Calor de un Hogar</h1>
+        <p>Hosp&eacute;date en Monteverde y d&eacute;jate consentir por Lili. Aqu&iacute; no eres un hu&eacute;sped, eres familia.</p>
+        <div class="btn-group">
+            <a href="https://wa.me/50687725487?text=Hola%20Lili,%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20consultar%20disponibilidad." class="cta-btn"><i class="fab fa-whatsapp"></i> Reservas Directas con Lili</a>
+            <a href="https://wa.me/50688293089?text=Hola%20Christan,%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20tengo%20algunas%20consultas." class="cta-btn secondary"><i class="fab fa-whatsapp"></i> Habla con Christan</a>
+        </div>
+    </div>
+
+    <div class="trust-bar">
+        <div class="trust-item"><i class="fas fa-star"></i> 4.7 / 5 en Google Maps</div>
+        <div class="trust-item"><i class="fas fa-heart"></i> El Hostal m&aacute;s querido de la zona</div>
+        <div class="trust-item"><i class="fas fa-utensils"></i> Desayunos Legendarios</div>
+    </div>
+
+    <section id="lili">
+        <div class="lili-section">
+            <div class="lili-img fade-in">
+                <img src="images/lili.jpg" alt="Lili de Twin Palms">
+            </div>
+            <div class="lili-text">
+                <h3>El Alma Detr&aacute;s de la Casa: Lili</h3>
+                <p>Nuestros hu&eacute;spedes coinciden en algo: Lili es el coraz&oacute;n de esta experiencia. Con m&aacute;s de 4 a&ntilde;os recibiendo viajeros de todo el mundo, Lili se encarga de que cada ma&ntilde;ana comience con energ&iacute;a y una sonrisa.</p>
+                <p>Desde sus famosos panqueques reci&eacute;n hechos hasta su asesor&iacute;a experta para que no pagues de m&aacute;s en tus tours, ella es quien har&aacute; que tu estancia en Monteverde sea inolvidable.</p>
+                <a href="#reviews" class="cta-btn" style="display:inline-flex; width:auto;">Lee lo que dicen de ella</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="alojamiento" style="background:#f9f7f2">
+        <div class="section-title">
+            <h2>Hosp&eacute;date con Nosotros</h2>
+            <div></div>
+        </div>
+        <div class="grid">
+            <div class="card fade-in">
+                <img src="images/hero.jpg" alt="Casa Completa">
+                <div class="card-body">
+                    <h3>Casa de 3 Habitaciones</h3>
+                    <p>Espaciosa, impecable y lista para tu familia. Incluye acceso a cocina completa, sala de estar y fachada.</p>
+                    <button class="cta-btn secondary" onclick="openGallery('casa_completa')" style="margin-top:15px; font-size:0.8rem; padding:8px 20px; border:none; cursor:pointer; width:100%; justify-content:center;">Ver Fotos</button>
+                </div>
+            </div>
+            <div class="card fade-in" style="transition-delay: 0.2s">
+                <img src="images/bano_privado/1.jpg" alt="Habitaci&oacute;n Privada">
+                <div class="card-body">
+                    <h3>Habitaci&oacute;n con Ba&ntilde;o Privado</h3>
+                    <p>Confort y privacidad total. Ideal para parejas buscando un descanso profundo tras un d&iacute;a de aventura.</p>
+                    <button class="cta-btn secondary" onclick="openGallery('bano_privado')" style="margin-top:15px; font-size:0.8rem; padding:8px 20px; border:none; cursor:pointer; width:100%; justify-content:center;">Ver Fotos</button>
+                </div>
+            </div>
+            <div class="card fade-in" style="transition-delay: 0.4s">
+                <img src="images/bano_compartido/5.jpg" alt="Ba&ntilde;o Compartido">
+                <div class="card-body">
+                    <h3>Habitaciones (Ba&ntilde;o Compartido)</h3>
+                    <p>Dos habitaciones confortables con ba&ntilde;o compartido. Perfectas para familias o grupos de amigos.</p>
+                    <button class="cta-btn secondary" onclick="openGallery('bano_compartido')" style="margin-top:15px; font-size:0.8rem; padding:8px 20px; border:none; cursor:pointer; width:100%; justify-content:center;">Ver Fotos</button>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 30px;">
+            <div class="card fade-in" style="max-width: 500px; margin: 0 auto;">
+                <img src="images/desayuno.jpg" alt="Desayuno Tropical">
+                <div class="card-body" style="text-align:center;">
+                    <h3>🍍 Desayuno Tropical Incluido</h3>
+                    <p>Cada ma&ntilde;ana Lili te recibe con un plato de frutas frescas de Costa Rica, panqueques y el mejor caf&eacute; de altura. &iexcl;La mejor forma de empezar tu aventura!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APARTAMENTO TWIN PALMS -->
+    <section id="apartamento" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 80px 20px;">
+        <div class="section-title">
+            <h2 style="color: #e2b04a; font-size: 2.2rem;">&#11088; Apartamento Twin Palms</h2>
+            <div style="background: #e2b04a;"></div>
+        </div>
+        <p style="text-align:center; color: #ccc; max-width: 700px; margin: 0 auto 40px; font-size: 1.1rem; line-height: 1.8;">
+            Nuestro apartamento de dise&ntilde;o moderno e industrial: un espacio &uacute;nico con <strong style="color:#e2b04a">altillo privado</strong>, 
+            cocina totalmente equipada, comedor elegante y ba&ntilde;o propio. Ideal para parejas o viajeros que buscan 
+            independencia total con el confort de un hotel boutique.
+        </p>
+
+        <!-- Apartment Features -->
+        <div class="grid" style="max-width: 900px; margin: 0 auto 40px;">
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; text-align: center;">
+                <i class="fas fa-bed" style="font-size: 2rem; color: #e2b04a; margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; font-size: 1rem;">Cama Queen</h3>
+                <p style="color: #aaa; font-size: 0.85rem;">Cama doble con ropa de cama premium</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; text-align: center;">
+                <i class="fas fa-utensils" style="font-size: 2rem; color: #e2b04a; margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; font-size: 1rem;">Cocina Completa</h3>
+                <p style="color: #aaa; font-size: 0.85rem;">Estufa, refrigerador, utensilios y cafetera</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; text-align: center;">
+                <i class="fas fa-arrow-up" style="font-size: 2rem; color: #e2b04a; margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; font-size: 1rem;">Altillo Privado</h3>
+                <p style="color: #aaa; font-size: 0.85rem;">Segundo nivel con espacio extra</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 25px; text-align: center;">
+                <i class="fas fa-shower" style="font-size: 2rem; color: #e2b04a; margin-bottom: 10px;"></i>
+                <h3 style="color: #fff; font-size: 1rem;">Ba&ntilde;o Privado</h3>
+                <p style="color: #aaa; font-size: 0.85rem;">Ba&ntilde;o completo con agua caliente</p>
+            </div>
+        </div>
+
+        <!-- Apartment Gallery Preview -->
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 30px;">
+                <img src="images/apartamento/6.jpg" alt="Apartamento Vista General" style="width:100%; height: 250px; object-fit: cover; border-radius: 10px; cursor: pointer;" onclick="openGallery('apartamento')">
+                <img src="images/apartamento/5.jpg" alt="Apartamento Cama" style="width:100%; height: 250px; object-fit: cover; border-radius: 10px; cursor: pointer;" onclick="openGallery('apartamento')">
+                <img src="images/apartamento/1.jpg" alt="Apartamento Cocina" style="width:100%; height: 250px; object-fit: cover; border-radius: 10px; cursor: pointer;" onclick="openGallery('apartamento')">
+            </div>
+            <div style="text-align: center;">
+                <button class="cta-btn secondary" onclick="openGallery('apartamento')" style="font-size: 1rem; padding: 12px 35px; border: 2px solid #e2b04a; background: transparent; color: #e2b04a; cursor: pointer; margin-right: 15px;">
+                    <i class="fas fa-images"></i> Ver las 11 Fotos
+                </button>
+                <a href="https://wa.me/50688293089?text=Hola%20Christan!%20Me%20interesa%20reservar%20el%20Apartamento%20Twin%20Palms.%20%C2%BFPodr%C3%ADas%20darme%20m%C3%A1s%20informaci%C3%B3n?" class="cta-btn" style="font-size: 1rem; padding: 12px 35px; text-decoration: none; display: inline-block;">
+                    <i class="fab fa-whatsapp"></i> Reservar Apartamento
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <div class="section-title">
+            <h2 style="color:#fff">La Voz de Nuestros Hu&eacute;spedes</h2>
+            <div style="background:var(--accent)"></div>
+        </div>
+        <div class="grid">
+            <div class="review-card">
+                <p>"Lili la encargada es un sol! La habitaci&oacute;n tiene todo y la cocina es complet&iacute;sima. Te sientes como en casa."</p>
+                <span>- Hector Moreno (Local Guide)</span>
+            </div>
+            <div class="review-card">
+                <p>"&iexcl;Lily prepara los panqueques m&aacute;s deliciosos de toda Costa Rica! Se nota cu&aacute;nto le encanta recibir gente."</p>
+                <span>- Michalina K.</span>
+            </div>
+            <div class="review-card">
+                <p>"Lili te hace sentir estupenda, es cari&ntilde;osa y te informa de todo lo que puedes hacer en Monteverde."</p>
+                <span>- Raquel Arranz</span>
+            </div>
+        </div>
+        <button class="view-all-btn" onclick="openModal()">Ver m&aacute;s de 30 rese&ntilde;as positivas</button>
+    </section>
+
+    <div id="reviewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 style="margin-bottom:20px">Rese&ntilde;as Reales de Google</h2>
+            
+            <div class="modal-review">
+                <strong>Ieva Vi:</strong> "Twin Palms House fue un lugar fant&aacute;stico. Lily es una persona muy amable y disfrutamos mucho."
+            </div>
+            <div class="modal-review">
+                <strong>C N:</strong> "&iexcl;An&iacute;mate sin dudarlo! Lili es encantadora y prepara panqueques deliciosos cada ma&ntilde;ana."
+            </div>
+            <div class="modal-review">
+                <strong>Tobias Fuhrmann:</strong> "&iexcl;Un hostal fant&aacute;stico! Lili es una joya y gestiona el lugar de forma incre&iacute;ble."
+            </div>
+            <div class="modal-review">
+                <strong>Patrycja:</strong> "Lily es una anfitriona maravillosa; prepara desayunos abundantes con un buen caf&eacute;."
+            </div>
+            <div class="modal-review">
+                <strong>Bas van der Zouwen:</strong> "Un hogar lejos de casa. Pasamos dos noches en el acogedor hostal de Lili. Es un lugar maravilloso."
+            </div>
+            <div class="modal-review">
+                <strong>P J:</strong> "Lili fue fant&aacute;stica. P&iacute;dele ayuda para reservar tours y ella te los organizar&aacute;."
+            </div>
+            <div class="modal-review">
+                <strong>Sarah Coyne:</strong> "Twin Palms es excepcional y su estrella es Lili. Lili es una anfitriona increíble, c&aacute;lida y acogedora."
+            </div>
+            <p style="margin-top:20px; text-align:center; font-weight:700">... y muchas m&aacute;s rese&ntilde;as de 5 estrellas.</p>
+        </div>
+    </div>
+
+    <section id="experiencias" style="background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%); padding: 80px 20px;">
+        <div class="section-title">
+            <h2 style="color: #1a1a2e;">&#127757; Tours y Aventuras en Monteverde</h2>
+            <div style="background: var(--accent);"></div>
+        </div>
+        <p style="text-align:center; color: #555; max-width: 750px; margin: -10px auto 50px; font-size: 1.1rem; line-height: 1.8;">
+            Lili te organiza los <strong>mejores tours con precios locales</strong>. 
+            Solo escr&iacute;bele por WhatsApp y ella se encarga de todo: transporte, horarios y reservas.
+        </p>
+
+        <!-- Tour Cards Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto;">
+
+            <!-- 1. Canopy / Zipline -->
+            <div class="fade-in" style="background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;">
+                <img src="images/tours/canopy.png" alt="Canopy Zipline Monteverde" style="width:100%; height: 220px; object-fit: cover;">
+                <div style="padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                        <span style="background: #e74c3c; color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">&#128293; Popular</span>
+                        <span style="color: #888; font-size: 0.8rem;">~2-3 horas</span>
+                    </div>
+                    <h3 style="color: #1a1a2e; margin-bottom: 8px; font-size: 1.2rem;">Canopy &amp; Zipline</h3>
+                    <p style="color: #555; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                        &iexcl;Vuela sobre el bosque nuboso! Circuitos de tirolesas con Selvatura Park, Sky Adventures o Treetopia. 
+                        Adrenalina pura con vistas espectaculares del dosel del bosque.
+                    </p>
+                    <button class="tour-open-btn" onclick="openTourModal('canopy')"><i class="fas fa-info-circle"></i> Ver Detalles &amp; Reservar</button>
+                </div>
+            </div>
+
+            <!-- 2. Night Tour -->
+            <div class="fade-in" style="background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;">
+                <img src="images/tours/night_tour.png" alt="Tour Nocturno Monteverde" style="width:100%; height: 220px; object-fit: cover;">
+                <div style="padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                        <span style="background: #6c3483; color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">&#127769; &Uacute;nico</span>
+                        <span style="color: #888; font-size: 0.8rem;">~2 horas (5:30 PM)</span>
+                    </div>
+                    <h3 style="color: #1a1a2e; margin-bottom: 8px; font-size: 1.2rem;">Tour Nocturno</h3>
+                    <p style="color: #555; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                        El 80% de la fauna es nocturna. Con un gu&iacute;a naturalista descubrir&aacute;s ranas de ojos rojos, 
+                        perezosos, tar&aacute;ntulas y kinkajous. &iexcl;Una experiencia inolvidable!
+                    </p>
+                    <button class="tour-open-btn" onclick="openTourModal('night')"><i class="fas fa-info-circle"></i> Ver Detalles &amp; Reservar</button>
+                </div>
+            </div>
+
+            <!-- 3. Coffee, Chocolate & Sugar Cane -->
+            <div class="fade-in" style="background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;">
+                <img src="images/tours/coffee.png" alt="Tour de Cafe Monteverde" style="width:100%; height: 220px; object-fit: cover;">
+                <div style="padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                        <span style="background: #8d6e63; color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">&#9749; Cultural</span>
+                        <span style="color: #888; font-size: 0.8rem;">~2 horas</span>
+                    </div>
+                    <h3 style="color: #1a1a2e; margin-bottom: 8px; font-size: 1.2rem;">Tour de Caf&eacute;</h3>
+                    <p style="color: #555; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                        Aprende el proceso completo del caf&eacute; de altura: desde la semilla hasta la taza. 
+                        Visita fincas locales y degusta el mejor caf&eacute; de Costa Rica reci&eacute;n tostado.
+                    </p>
+                    <button class="tour-open-btn" onclick="openTourModal('coffee')"><i class="fas fa-info-circle"></i> Ver Detalles &amp; Reservar</button>
+                </div>
+            </div>
+
+            <!-- 4. Puentes Colgantes -->
+            <div class="fade-in" style="background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;">
+                <img src="images/tours/puentes.png" alt="Puentes Colgantes Monteverde" style="width:100%; height: 220px; object-fit: cover;">
+                <div style="padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                        <span style="background: #27ae60; color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">&#127795; Naturaleza</span>
+                        <span style="color: #888; font-size: 0.8rem;">~2-3 horas</span>
+                    </div>
+                    <h3 style="color: #1a1a2e; margin-bottom: 8px; font-size: 1.2rem;">Puentes Colgantes</h3>
+                    <p style="color: #555; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                        Camina sobre el dosel del bosque nuboso en puentes suspendidos. Selvatura, Sky Walk 
+                        y Treetopia ofrecen circuitos espectaculares. Ideal para fotograf&iacute;a y familias.
+                    </p>
+                    <button class="tour-open-btn" onclick="openTourModal('puentes')"><i class="fas fa-info-circle"></i> Ver Detalles &amp; Reservar</button>
+                </div>
+            </div>
+
+            <!-- 5. Reserva Biológica Monteverde / Santa Elena -->
+            <div class="fade-in" style="background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;">
+                <img src="images/tours/reserva.png" alt="Reserva Biologica Monteverde" style="width:100%; height: 220px; object-fit: cover;">
+                <div style="padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                        <span style="background: #1e8449; color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">&#127807; Imperdible</span>
+                        <span style="color: #888; font-size: 0.8rem;">Medio d&iacute;a</span>
+                    </div>
+                    <h3 style="color: #1a1a2e; margin-bottom: 8px; font-size: 1.2rem;">Reservas Biol&oacute;gicas</h3>
+                    <p style="color: #555; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                        Explora la <strong>Reserva Monteverde</strong>, <strong>Santa Elena</strong> o <strong>Curi-Cancha</strong>. 
+                        Senderos en el bosque nuboso, aves ex&oacute;ticas como el Quetzal y biodiversidad &uacute;nica.
+                    </p>
+                    <button class="tour-open-btn" onclick="openTourModal('reserva')"><i class="fas fa-info-circle"></i> Ver Detalles &amp; Reservar</button>
+                </div>
+            </div>
+
+            <!-- 6. Chocolate & Trapiche -->
+            <div class="fade-in" style="background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s;">
+                <img src="images/tours/chocolate.png" alt="Tour Chocolate y Trapiche Monteverde" style="width:100%; height: 220px; object-fit: cover;">
+                <div style="padding: 25px;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                        <span style="background: #d4a574; color: #fff; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">&#127851; Familiar</span>
+                        <span style="color: #888; font-size: 0.8rem;">~2 horas</span>
+                    </div>
+                    <h3 style="color: #1a1a2e; margin-bottom: 8px; font-size: 1.2rem;">Chocolate &amp; Trapiche</h3>
+                    <p style="color: #555; font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                        Tour 3 en 1: Cacao, ca&ntilde;a de az&uacute;car y caf&eacute; en <strong>El Trapiche</strong>. 
+                        Monta en carreta de bueyes, haz tu propia panela y prueba chocolate artesanal.
+                    </p>
+                    <button class="tour-open-btn" onclick="openTourModal('chocolate')"><i class="fas fa-info-circle"></i> Ver Detalles &amp; Reservar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CTA Final -->
+        <div style="text-align: center; margin-top: 50px; padding: 40px 20px; background: rgba(26, 26, 46, 0.95); border-radius: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 10px;">&#128172; &iquest;No sabes cu&aacute;l tour elegir?</h3>
+            <p style="color: #ccc; margin-bottom: 25px; font-size: 1rem;">Lili conoce Monteverde como nadie. Escr&iacute;bele y te arma el <strong style="color:#e2b04a">itinerario perfecto</strong> seg&uacute;n tus gustos y presupuesto.</p>
+            <a href="https://wa.me/50687725487?text=Hola%20Lili,%20estoy%20planeando%20mi%20visita%20a%20Monteverde.%20%C2%BFMe%20ayudas%20a%20armar%20un%20itinerario%20de%20tours?" target="_blank" class="cta-btn" style="font-size: 1.1rem; padding: 14px 35px; text-decoration: none; display: inline-block;">
+                <i class="fab fa-whatsapp"></i> Pedir Itinerario Personalizado
+            </a>
+        </div>
+
+        <!-- Servicios Extra -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 800px; margin: 50px auto 0;">
+            <div style="background: #fff; border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <i class="fas fa-tshirt" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 12px;"></i>
+                <h3 style="color: #1a1a2e; font-size: 1rem; margin-bottom: 8px;">Servicio de Lavander&iacute;a</h3>
+                <p style="color: #666; font-size: 0.85rem;">Deja tu ropa en la ma&ntilde;ana y rec&iacute;bela limpia y doblada en la tarde.</p>
+            </div>
+            <div style="background: #fff; border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <i class="fas fa-car" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 12px;"></i>
+                <h3 style="color: #1a1a2e; font-size: 1rem; margin-bottom: 8px;">Parqueo Privado</h3>
+                <p style="color: #666; font-size: 0.85rem;">Espacio seguro dentro de la propiedad, cerrado y vigilado 24/7.</p>
+            </div>
+            <div style="background: #fff; border-radius: 12px; padding: 25px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <i class="fas fa-wifi" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 12px;"></i>
+                <h3 style="color: #1a1a2e; font-size: 1rem; margin-bottom: 8px;">WiFi Gratis</h3>
+                <p style="color: #666; font-size: 0.85rem;">Internet de alta velocidad en toda la propiedad para que est&eacute;s siempre conectado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Modal -->
+    <div id="tourModal" onclick="if(event.target===this) closeTourModal()">
+        <div class="tour-modal-wrap">
+            <button class="tour-modal-close" onclick="closeTourModal()">&#10005;</button>
+            <div class="tour-modal-box">
+                <img id="tmImg" class="tour-modal-img" src="" alt="">
+                <div class="tour-modal-body">
+                    <span id="tmBadge" class="tour-modal-badge"></span>
+                    <h2 id="tmTitle" class="tour-modal-title"></h2>
+                    <p id="tmMeta" class="tour-modal-meta"></p>
+                    <p id="tmDesc" class="tour-modal-desc"></p>
+                    <div class="tour-modal-highlights">
+                        <h4>&#128204; Qu&eacute; incluye</h4>
+                        <ul id="tmHighlights"></ul>
+                    </div>
+                    <div style="text-align:center;">
+                        <a id="tmWa" href="#" target="_blank" class="tour-modal-wa">
+                            <i class="fab fa-whatsapp" style="font-size:1.4rem;"></i>
+                            Reservar con Lili por WhatsApp
+                        </a>
+                        <p style="margin-top:12px; color:#999; font-size:0.8rem;">Lili responde r&aacute;pidamente &#128512;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/50687725487" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer id="contacto">
+        <div class="footer-logo">Twin Palms House</div>
+        <p>Valle Bonito, Monteverde, Costa Rica</p>
+        <div style="margin: 20px 0;">
+            <a href="https://wa.me/50687725487" class="footer-links"><i class="fab fa-whatsapp"></i> Reservas con Lili</a>
+            <a href="https://wa.me/50688293089" class="footer-links"><i class="fab fa-whatsapp"></i> Consultas Christan</a>
+            <a href="https://www.instagram.com/thetwinspalmshouse/" class="footer-links"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://www.facebook.com/people/Twin-Palms-House/100093321135579/" class="footer-links"><i class="fab fa-facebook"></i> Facebook</a>
+        </div>
+        <p style="opacity:0.4; font-size:0.8rem">&copy; 2026 Twin Palms House - Monteverde. Pura Vida.</p>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal" style="background: rgba(0,0,0,0.95); padding: 20px;">
+        <span class="close-modal" onclick="closeGallery()" style="color: white; position: absolute; right: 30px; top: 20px; font-size: 40px;">&times;</span>
+        <div class="gallery-container" style="max-width: 900px; margin: 0 auto; position: relative; display: flex; justify-content: center; align-items: center; height: 100%;">
+            <a class="prev" onclick="changeImage(-1)" style="cursor: pointer; position: absolute; left: 10px; color: white; font-size: 50px; font-weight: bold; padding: 10px; text-decoration: none; user-select: none;">&#10094;</a>
+            <img id="galleryImg" src="" style="max-width: 100%; max-height: 80vh; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: contain;">
+            <a class="next" onclick="changeImage(1)" style="cursor: pointer; position: absolute; right: 10px; color: white; font-size: 50px; font-weight: bold; padding: 10px; text-decoration: none; user-select: none;">&#10095;</a>
+        </div>
+    </div>
+
+    <script>
+        // Gallery Logic
+        let currentGallery = '';
+        let currentIndex = 1;
+        
+        function openGallery(folder) {
+            currentGallery = folder;
+            currentIndex = 1;
+            document.getElementById('galleryModal').style.display = 'block';
+            updateGalleryImage();
+        }
+
+        function closeGallery() {
+            document.getElementById('galleryModal').style.display = 'none';
+        }
+
+        function changeImage(n) {
+            currentIndex += n;
+            if(currentIndex < 1) currentIndex = 1;
+            updateGalleryImage();
+        }
+
+        function updateGalleryImage() {
+            const img = document.getElementById('galleryImg');
+            // Try loading the image. If missing, it triggers onerror
+            img.src = `images/${currentGallery}/${currentIndex}.jpg`;
+            
+            img.onerror = function() {
+                // If it fails to load and we moved forward, it means we hit the end, loop back to 1
+                if(currentIndex > 1) {
+                    currentIndex = 1;
+                    img.src = `images/${currentGallery}/1.jpg`;
+                }
+            };
+        }
+
+        // Reviews Modal logic
+        function openModal() { document.getElementById('reviewModal').style.display = 'block'; }
+        function closeModal() { document.getElementById('reviewModal').style.display = 'none'; }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('reviewModal')) closeModal();
+            if (event.target == document.getElementById('galleryModal')) closeGallery();
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Scroll animations using IntersectionObserver
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+        });
+
+        // ── Tour Modal ──────────────────────────────────────────────
+        const TOURS = {
+            canopy: {
+                img: 'images/tours/canopy.png',
+                badge: '🔥 Popular',
+                badgeColor: '#e74c3c',
+                title: 'Canopy & Zipline',
+                meta: '⏱ Duración: 2-3 horas  |  🌿 Nivel: Apto para todos',
+                desc: '¡Vuela sobre el dosel del bosque nuboso de Monteverde en tirolesas de hasta 1 km de longitud! Empresas líderes como Selvatura Park, Sky Adventures y Treetopia ofrecen circuitos de primer nivel con instructores certificados y equipo de seguridad profesional. Una experiencia de adrenalina pura con vistas que no olvidarás.',
+                highlights: [
+                    'Tirolesas sobre el bosque nuboso (hasta 1 km)',
+                    'Plataformas con vistas panorámicas espectaculares',
+                    'Instructores certificados y equipo de seguridad',
+                    'Opciones en Selvatura Park, Sky Adventures y Treetopia',
+                    'Transporte de ida y vuelta desde Twin Palms'
+                ],
+                wa: 'https://wa.me/50687725487?text=Hola%20Lili!%20Me%20interesa%20el%20tour%20de%20Canopy%2FZipline%20en%20Monteverde.%20%C2%BFQu%C3%A9%20opciones%20hay%20y%20cu%C3%A1l%20es%20el%20precio%3F'
+            },
+            night: {
+                img: 'images/tours/night_tour.png',
+                badge: '🌙 Único',
+                badgeColor: '#6c3483',
+                title: 'Tour Nocturno',
+                meta: '⏱ Duración: ~2 horas  |  🕥 Salida: 5:30 PM',
+                desc: 'El 80% de la fauna del bosque nuboso es nocturna. Con un guía naturalista experto y linternas especiales, descubrirás un mundo mágico e invisible durante el día: ranas de ojos rojos, perezosos dormidos en las ramas, tarántulas, murciélagos, kinkajous y serpientes. ¡Una experiencia completamente diferente!',
+                highlights: [
+                    'Ranas de ojos rojos, tarántulas y kinkajous',
+                    'Perezosos de dos y tres dedos en su hábitat natural',
+                    'Guía naturalista certificado con linterna especializada',
+                    'Grupos pequeños para mejor avistamiento',
+                    'Recorrido en reserva privada o bosque secundario'
+                ],
+                wa: 'https://wa.me/50687725487?text=Hola%20Lili!%20Quiero%20hacer%20el%20Tour%20Nocturno%20en%20Monteverde.%20%C2%BFC%C3%B3mo%20lo%20reservo%3F'
+            },
+            coffee: {
+                img: 'images/tours/coffee.png',
+                badge: '☕ Cultural',
+                badgeColor: '#8d6e63',
+                title: 'Tour de Café',
+                meta: '⏱ Duración: ~2 horas  |  👨‍🌾 Experiencia: Todas las edades',
+                desc: 'Monteverde produce uno de los mejores cafés de altura del mundo. En este tour aprenderás el proceso completo: siembra, cosecha, beneficio húmedo, secado y tueste artesanal. Visita fincas cafetaleras locales, recoge granos directamente del arbusto (en temporada) y termina con una degustación del café más fresco que hayas tomado en tu vida.',
+                highlights: [
+                    'Visita a fincas cafetaleras de altura certificadas',
+                    'Proceso completo: de la semilla a la taza',
+                    'Cosecha de granos (en temporada mayo-enero)',
+                    'Tueste artesanal y cata de café premium',
+                    'Souvenir de café local para llevar a casa'
+                ],
+                wa: 'https://wa.me/50687725487?text=Hola%20Lili!%20Quiero%20hacer%20el%20Tour%20de%20Caf%C3%A9%20en%20Monteverde.%20%C2%BFCu%C3%A1ndo%20hay%20disponibilidad%3F'
+            },
+            puentes: {
+                img: 'images/tours/puentes.png',
+                badge: '🌳 Naturaleza',
+                badgeColor: '#27ae60',
+                title: 'Puentes Colgantes',
+                meta: '⏱ Duración: 2-3 horas  |  📸 Ideal para fotos',
+                desc: 'Camina por encima del dosel del bosque nuboso a través de espectaculares puentes suspendidos. Selvatura Park, Sky Walk y Treetopia tienen sistemas de puentes colgantes de clase mundial. Perfecto para observar aves, orquídeas, bromelias y fauna del bosque desde una perspectiva única. Apto para todas las edades y niveles de condición física.',
+                highlights: [
+                    'Puentes colgantes sobre el dosel del bosque nuboso',
+                    'Avistamiento de aves: tucanes, quetzales y colibríes',
+                    'Orquídeas, bromelias y epífitas en su ambiente natural',
+                    'Opciones en Selvatura, Sky Walk y Treetopia',
+                    'Apto para familias con niños y adultos mayores'
+                ],
+                wa: 'https://wa.me/50687725487?text=Hola%20Lili!%20Me%20interesan%20los%20Puentes%20Colgantes%20en%20Monteverde.%20%C2%BFCu%C3%A1l%20me%20recomiendas%3F'
+            },
+            reserva: {
+                img: 'images/tours/reserva.png',
+                badge: '🍃 Imperdible',
+                badgeColor: '#1e8449',
+                title: 'Reservas Biológicas',
+                meta: '⏱ Duración: Medio día  |  🦅 Ideal para birdwatching',
+                desc: 'Las reservas de Monteverde y Santa Elena son Patrimonio Natural de Costa Rica. Con senderos bien mantenidos en el corazón del bosque nuboso, la Reserva Biológica Monteverde, la Reserva Santa Elena y Curi-Cancha ofrecen la experiencia de naturaleza más auténtica de la región. Altamente recomendada para avistar el mítico Quetzal Resplandeciente.',
+                highlights: [
+                    'Reserva Biológica Monteverde (más de 3.000 hectáreas)',
+                    'Reserva Santa Elena y Curi-Cancha como alternativas',
+                    'Avistamiento del Quetzal Resplandeciente',
+                    'Más de 200 especies de aves registradas',
+                    'Guía naturalista opcional o autoguiado'
+                ],
+                wa: 'https://wa.me/50687725487?text=Hola%20Lili!%20Quiero%20visitar%20la%20Reserva%20Biol%C3%B3gica%20de%20Monteverde.%20%C2%BFMe%20ayudas%20a%20organizar%20la%20visita%3F'
+            },
+            chocolate: {
+                img: 'images/tours/chocolate.png',
+                badge: '🍫 Familiar',
+                badgeColor: '#c0874f',
+                title: 'Chocolate & Trapiche',
+                meta: '⏱ Duración: ~2 horas  |  👨‍👩‍👧 Apto para familias',
+                desc: 'Un tour 3 en 1 que te conecta con las raíces de Costa Rica en la famosa finca El Trapiche. Aprende cómo se cultiva y procesa el cacao para hacer chocolate artesanal, extrae jugo de caña en un trapiche de bueyes tradicional y conoce el proceso del café de la finca. Termina degustando delicias locales como panela, chocolate caliente y tortillas hechas a mano.',
+                highlights: [
+                    'Tour 3 en 1: Cacao, Caña de Azúcar y Café',
+                    'Paseo en carreta de bueyes tradicional',
+                    'Elaboración de panela y chocolate artesanal',
+                    'Degustación de tortillas, dulce de caña y chocolate',
+                    'El Trapiche: la finca agrícola más famosa de Monteverde'
+                ],
+                wa: 'https://wa.me/50687725487?text=Hola%20Lili!%20Me%20interesa%20el%20Tour%20de%20Chocolate%20y%20Trapiche%20en%20Monteverde.%20%C2%BFCu%C3%A1ndo%20hay%20salida%3F'
+            }
+        };
+
+        function openTourModal(key) {
+            const t = TOURS[key];
+            if (!t) return;
+            document.getElementById('tmImg').src = t.img;
+            document.getElementById('tmImg').alt = t.title;
+            const badge = document.getElementById('tmBadge');
+            badge.textContent = t.badge;
+            badge.style.background = t.badgeColor;
+            document.getElementById('tmTitle').textContent = t.title;
+            document.getElementById('tmMeta').textContent = t.meta;
+            document.getElementById('tmDesc').textContent = t.desc;
+            const ul = document.getElementById('tmHighlights');
+            ul.innerHTML = t.highlights.map(h => `<li>${h}</li>`).join('');
+            document.getElementById('tmWa').href = t.wa;
+            document.getElementById('tourModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTourModal() {
+            document.getElementById('tourModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') { closeTourModal(); closeModal(); closeGallery(); }
+        });
+    </script>
+</body>
+</html>
